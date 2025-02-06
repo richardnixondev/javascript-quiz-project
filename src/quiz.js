@@ -58,3 +58,5 @@ class Quiz {
 
     // 6. hasEnded()
 }
+
+//Kainat Naseer :)
