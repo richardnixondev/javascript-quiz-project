@@ -36,12 +36,32 @@ class Quiz {
 
 
     filterQuestionsByDifficulty(difficulty){
-     
+       
+        if(typeof difficulty !== "number" || difficulty < 1 || difficulty > 3){
+            return this.questions;
+        }
+        
+        this.questions = this.questions.filter(question => question.difficulty === difficulty);
+        if (this.questions.length === 0) {
+            return this.questions
+        } 
+
     }
+// Implement method filterQuestionsByDifficulty() in Quiz class using the array method filter().
+ 
 
     averageDifficulty(){
-   
+        if(this.questions.length === 0) return 0;
+        const avgDifficulty = this.questions.reduce((acc, question) => acc + question.difficulty, 0);
+        return avgDifficulty / this.questions.length;
+
+
+  //        let difficulty = [1, 2, 3];
+   //     return average(difficulty.reduce(acc, currentValue) => acc + currentValue / difficulty.length)
     }
+//  Implement method averageDifficulty() in Quiz class using the array method reduce().
+
+
 
 
     // YOUR CODE HERE:
