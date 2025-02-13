@@ -98,12 +98,31 @@ document.addEventListener("DOMContentLoaded", () => {
     //
     // 1. Show the question
     // Update the inner text of the question container element and show the question text
+    let interationOne = document.querySelector("#question");
+    interationOne.innerHTML = question.text
 
-    
+
+
     // 2. Update the green progress bar
     // Update the green progress bar (div#progressBar) width so that it shows the percentage of questions answered
-    
-    progressBar.style.width = `65%`; // This value is hardcoded as a placeholder
+ 
+
+    //progressBar.style.width = `20%`; // This value is hardcoded as a placeholder
+  
+  /*
+  let progressBar = document.getElementById("progressBar");
+    let width = 10;
+
+    let interval = setInterval(function(){
+      if(width >= 100) {
+        clearInterval(interval);
+      } else {
+        width ++;
+        progressBar.style.width = width + '%';
+        progressBar.textContent = width + '%';
+      }
+    }, 100);*/
+  
 
 
 
