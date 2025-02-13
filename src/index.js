@@ -153,6 +153,19 @@ document.addEventListener("DOMContentLoaded", () => {
       // Hint 3: You can use the `element.appendChild()` method to append an element to the choices container.
       // Hint 4: You can use the `element.innerText` property to set the inner text of an element.
 
+    question.choices.forEach((choice) => {
+      let radioInput = document.createElement("input");
+      radioInput.type = "radio";
+      radioInput.name = "choice";
+      radioInput.value = choice;
+
+      let radioLabel = document.createElement("label");
+      radioLabel.innerText = choice;
+    });
+    choiceContainer.appendChild(radioInput);
+    choiceContainer.appendChild(radioLabel);
+    
+
   }
 
 
