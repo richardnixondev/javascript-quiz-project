@@ -109,8 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //progressBar.style.width = `20%`; // This value is hardcoded as a placeholder
   
-  /*
-  let progressBar = document.getElementById("progressBar");
+  
+  /*let progressBar = document.getElementById("progressBar");
     let width = 10;
 
     let interval = setInterval(function(){
@@ -121,15 +121,21 @@ document.addEventListener("DOMContentLoaded", () => {
         progressBar.style.width = width + '%';
         progressBar.textContent = width + '%';
       }
-    }, 100);*/
+    }, ); */
   
 
+    let currentIndex = quiz.currentQuestionIndex + 1;
+    let totalQuestions = quiz.questions.length;
+    let progress = (currentIndex / totalQuestions) * 100;
+    console.log(`Progress: ${progress}%`);
+    progressBar.style.width = `${progress}%`;
 
 
     // 3. Update the question count text 
     // Update the question count (div#questionCount) show the current question out of total questions
     
-    questionCount.innerText = `Question 1 of 10`; //  This value is hardcoded as a placeholder
+  
+    questionCount.innerText = `Question ${currentIndex} of ${totalQuestions}`; //  This value is hardcoded as a placeholder
 
 
     
