@@ -98,8 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //
     // 1. Show the question
     // Update the inner text of the question container element and show the question text
-    let interationOne = document.querySelector("#question");
-    interationOne.innerHTML = question.text
+ 
+    questionContainer.innerHTML = question.text
 
 
 
@@ -164,7 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     choiceContainer.appendChild(radioInput);
     choiceContainer.appendChild(radioLabel);
-    
 
   }
 
