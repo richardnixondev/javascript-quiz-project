@@ -43,6 +43,66 @@ document.addEventListener("DOMContentLoaded", () => {
       "E = mc^2",
       3
     ),
+    new Question(
+      "What is the chemical symbol for gold?",
+      ["Au", "Ag", "Pb", "Fe"],
+      "Au",
+      1
+    ),
+    new Question(
+      "Who developed the theory of general relativity?",
+      ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Niels Bohr"],
+      "Albert Einstein",
+      2
+    ),
+    new Question(
+      "Which planet is known as the Red Planet?",
+      ["Venus", "Mars", "Jupiter", "Saturn"],
+      "Mars",
+      1
+    ),
+    new Question(
+      "What is the powerhouse of the cell?",
+      ["Nucleus", "Mitochondria", "Ribosome", "Golgi Apparatus"],
+      "Mitochondria",
+      1
+    ),
+    new Question(
+      "What is the derivative of sin(x)?",
+      ["cos(x)", "-cos(x)", "-sin(x)", "tan(x)"],
+      "cos(x)",
+      2
+    ),
+    new Question(
+      "What is the capital of Japan?",
+      ["Beijing", "Seoul", "Bangkok", "Tokyo"],
+      "Tokyo",
+      1
+    ),
+    new Question(
+      "Who wrote 'To be, or not to be'?",
+      ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+      "William Shakespeare",
+      2
+    ),
+    new Question(
+      "What is the speed of light in vacuum?",
+      ["299,792,458 m/s", "150,000,000 m/s", "3,000,000 m/s", "30,000 m/s"],
+      "299,792,458 m/s",
+      3
+    ),
+    new Question(
+      "Which element has the atomic number 1?",
+      ["Oxygen", "Hydrogen", "Carbon", "Nitrogen"],
+      "Hydrogen",
+      1
+    ),
+    new Question(
+      "What is the integral of x^2?",
+      ["(1/3)x^3 + C", "(1/2)x^3 + C", "x^3 + C", "(1/4)x^3 + C"],
+      "(1/3)x^3 + C",
+      3
+    ),
     // Add more questions here
   ];
   const quizDuration = 120; // 120 seconds (2 minutes)
