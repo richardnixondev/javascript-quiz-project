@@ -183,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please select an answer before proceeding!");
     }
   }
-  quiz.moveToNextQuestion();
   //
   // YOUR CODE HERE:
   //
