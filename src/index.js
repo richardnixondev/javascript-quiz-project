@@ -105,24 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Update the green progress bar
     // Update the green progress bar (div#progressBar) width so that it shows the percentage of questions answered
- 
-
-    //progressBar.style.width = `20%`; // This value is hardcoded as a placeholder
-  
-  
-  /*let progressBar = document.getElementById("progressBar");
-    let width = 10;
-
-    let interval = setInterval(function(){
-      if(width >= 100) {
-        clearInterval(interval);
-      } else {
-        width ++;
-        progressBar.style.width = width + '%';
-        progressBar.textContent = width + '%';
-      }
-    }, ); */
-  
 
     let currentIndex = quiz.currentQuestionIndex + 1;
     let totalQuestions = quiz.questions.length;
@@ -177,8 +159,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // YOUR CODE HERE:
     //
     // 1. Get all the choice elements. You can use the `document.querySelectorAll()` method.
+    let userChoices = document.querySelectorAll("input[name='choice']");
+    userChoices.forEach((choice) => {
+      if(choice.checked) {
+        selectedAnswer = choice.value;
+      }
+    });
+    let wrongAnswers = 0;
+      if (checkAnswer(selectedAnswer) === true) {
+        correctAnswers++
+      } else {
+        wrongAnswers = wrongAnswers +1;
+      }
 
-
+      quiz.moveToNextQuestion();
+      showQuestion();
     // 2. Loop through all the choice elements and check which one is selected
       // Hint: Radio input elements have a property `.checked` (e.g., `element.checked`).
       //  When a radio input gets selected the `.checked` property will be set to true.
