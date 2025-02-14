@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Array with the quiz questions
   const questions = [
-    new Question("What is 2 + 2?", ["3", "4", "5", "6"], "4", 1),
     new Question(
       "What is the capital of France?",
       ["Miami", "Paris", "Oslo", "Rome"],
@@ -103,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "(1/3)x^3 + C",
       3
     ),
-    // Add more questions here
+ 
   ];
   const quizDuration = 120; // 120 seconds (2 minutes)
 
@@ -209,14 +208,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hint 3: You can use the `element.appendChild()` method to append an element to the choices container.
     // Hint 4: You can use the `element.innerText` property to set the inner text of an element.
 
-    question.choices.forEach((choice) => {
+    question.choices.forEach((choice, index) => {
       let radioInput = document.createElement("input");
       radioInput.type = "radio";
       radioInput.name = "choice";
       radioInput.value = choice;
-
+      radioInput.id = `choice${index}`;
+    
       let radioLabel = document.createElement("label");
+      radioLabel.setAttribute("for", `choice${index}`);
       radioLabel.innerText = choice;
+    
       choiceContainer.appendChild(radioInput);
       choiceContainer.appendChild(radioLabel);
       choiceContainer.appendChild(document.createElement("br"));
@@ -224,25 +226,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function nextButtonHandler() {
-    const choices = document.querySelectorAll('input[name="choice"]');
-    let selectedAnswer;
-    choices.forEach((choice) => {
-      if (choice.checked) {
-        selectedAnswer = choice.value;
-      }
-    });
+    const selectedChoice = document.querySelector('input[name="choice"]:checked');
+    const selectedAnswer = selectedChoice ? selectedChoice.value : null;
+  
     if (selectedAnswer) {
       if (quiz.checkAnswer(selectedAnswer)) {
         console.log("Correct!");
       } else {
         console.log("Wrong!");
       }
+      console.log(`Current Score: ${quiz.correctAnswers}`); 
       quiz.moveToNextQuestion();
       showQuestion();
     } else {
       alert("Please select an answer before proceeding!");
     }
   }
+  
   //
   // YOUR CODE HERE:
   //

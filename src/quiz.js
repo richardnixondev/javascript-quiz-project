@@ -22,9 +22,14 @@ class Quiz {
         }
     }
 
-    checkAnswer(answer){
-        this.correctAnswers++; 
-    }
+    checkAnswer(answer) {
+        if (this.questions[this.currentQuestionIndex].answer === answer) {
+          this.correctAnswers++; 
+          return true;
+        }
+        return false;
+      }
+      
 
     hasEnded(){
         if(this.currentQuestionIndex < this.questions.length){
