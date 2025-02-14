@@ -215,3 +215,4 @@ document.addEventListener("DOMContentLoaded", () => {
     // resultContainer.innerText = `You scored 1 out of 1 correct answers!`; // This value is hardcoded as a placeholder
   }
 });
+
