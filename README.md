@@ -1,4 +1,11 @@
-# Project: JavaScript Quiz
+# 1 - Project: JavaScript Quiz
+
+
+![image](project-richard-kainat.gif)
+
+
+## Richard Nixon
+## Kainat Naseer
 
 ## Project Requirements
 
