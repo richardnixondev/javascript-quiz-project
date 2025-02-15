@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // timer
 //let TimerDisplay = document.querySelector("#countdown");
-
+let timerInterval = null
   // End view elements
   const resultContainer = document.querySelector("#result");
   
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ["Plato", "Brendan Eich", "Lea Verou", "Bill Gates"],
       "Brendan Eich",
       2
-    ),/*
+    ),
     new Question(
       "What is the mass–energy equivalence equation?",
       ["E = mc^2", "E = m*c^2", "E = m*c^3", "E = m*c"],
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ["(1/3)x^3 + C", "(1/2)x^3 + C", "x^3 + C", "(1/4)x^3 + C"],
       "(1/3)x^3 + C",
       3
-    ),*/
+    ),
 
   ];
   const quizDuration = 120; // 120 seconds (2 minutes)
@@ -135,18 +135,20 @@ document.addEventListener("DOMContentLoaded", () => {
   showQuestion();
 
   /************  TIMER  ************/
-
-  let remainingTime = quizDuration;
-  const timerInterval = setInterval(() => {
-    if (remainingTime <= 0) {
+ function controlTimer(){
+  quiz.timeRemaining = quizDuration;
+  timerInterval = setInterval(() => {
+    if (quiz.timeRemaining <= 0) {
       clearInterval(timerInterval);
       showResults();
     } else {
-      remainingTime--;
-      timeRemainingContainer.innerText = formatTime(remainingTime);
+     quiz.timeRemaining--;
+      timeRemainingContainer.innerText = formatTime(quiz.timeRemaining);
       
     }
   }, 1000);
+ }
+controlTimer();
 
 
 
@@ -166,6 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // If the quiz has ended, show the results
     if (quiz.hasEnded()) {
       showResults();
+      clearInterval(timerInterval)
       return;
     }
 
@@ -286,6 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Show the end view (div#endView)
     const endView = document.getElementById("endView");
+    
     endView.style.display = "flex";
 
     // 3. Update the result container (div#result) inner text to show the number of correct answers out of total questions
@@ -303,15 +307,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // button restart
 function restartButtonHandler() {
-  quizView.style.display = "flex";
+  quizView.style.display = "block";
   endView.style.display = "none";
+  quiz.timeRemaining = quizDuration;
   quiz.currentQuestionIndex = 0;
   quiz.correctAnswers = 0;
   quiz.shuffleQuestions();
-  //restartTimer();
+  controlTimer()
   showQuestion();
+
+
 };
 
 
 });
-
