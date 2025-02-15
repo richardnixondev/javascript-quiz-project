@@ -13,9 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
  // restart button
  const restartButton = document.querySelector("#restartButton");
 
+// timer
+//let TimerDisplay = document.querySelector("#countdown");
+
   // End view elements
   const resultContainer = document.querySelector("#result");
-
+  
   /************  SET VISIBILITY OF VIEWS  ************/
 
   // Show the quiz view (div#quizView) and hide the end view (div#endView)
@@ -118,21 +121,34 @@ document.addEventListener("DOMContentLoaded", () => {
   /************  SHOW INITIAL CONTENT  ************/
 
   // Convert the time remaining in seconds to minutes and seconds, and pad the numbers with zeros if needed
-  const minutes = Math.floor(quiz.timeRemaining / 60)
-    .toString()
-    .padStart(2, "0");
-  const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
+  function formatTime(timeInSeconds) {
+    const min = String(Math.floor(timeInSeconds / 60)).padStart(2, "0");
+    const sec = String(timeInSeconds % 60).padStart(2, "0");
+    return `${min}:${sec}`;
+  }
 
   // Display the time remaining in the time remaining container
   const timeRemainingContainer = document.getElementById("timeRemaining");
-  timeRemainingContainer.innerText = `${minutes}:${seconds}`;
+  //timeRemainingContainer.innerText = `${minutes}:${seconds}`;
 
   // Show first question
   showQuestion();
 
   /************  TIMER  ************/
 
-  let timer;
+  let remainingTime = quizDuration;
+  const timerInterval = setInterval(() => {
+    if (remainingTime <= 0) {
+      clearInterval(timerInterval);
+      showResults();
+    } else {
+      remainingTime--;
+      timeRemainingContainer.innerText = formatTime(remainingTime);
+      
+    }
+  }, 1000);
+
+
 
   /************  EVENT LISTENERS  ************/
 
@@ -277,6 +293,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // resultContainer.innerText = `You scored 1 out of 1 correct answers!`; // This value is hardcoded as a placeholder
   }
+
+ // function restartTimer(time){
+  //  if(restartButton.addEventListener("click", restartButtonHandler)){
+  //    quiz.remainingTime = quiz.quizDuration;
+  //  }
+ // }
+
+
 // button restart
 function restartButtonHandler() {
   quizView.style.display = "flex";
@@ -284,10 +308,9 @@ function restartButtonHandler() {
   quiz.currentQuestionIndex = 0;
   quiz.correctAnswers = 0;
   quiz.shuffleQuestions();
+  //restartTimer();
   showQuestion();
 };
-
-
 
 
 });
