@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionContainer = document.querySelector("#question");
   const choiceContainer = document.querySelector("#choices");
   const nextButton = document.querySelector("#nextButton");
+ // restart button
+ const restartButton = document.querySelector("#restartButton");
 
   // End view elements
   const resultContainer = document.querySelector("#result");
@@ -35,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ["Plato", "Brendan Eich", "Lea Verou", "Bill Gates"],
       "Brendan Eich",
       2
-    ),
+    ),/*
     new Question(
       "What is the mass–energy equivalence equation?",
       ["E = mc^2", "E = m*c^2", "E = m*c^3", "E = m*c"],
@@ -101,8 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
       ["(1/3)x^3 + C", "(1/2)x^3 + C", "x^3 + C", "(1/4)x^3 + C"],
       "(1/3)x^3 + C",
       3
-    ),
- 
+    ),*/
+
   ];
   const quizDuration = 120; // 120 seconds (2 minutes)
 
@@ -135,6 +137,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /************  EVENT LISTENERS  ************/
 
   nextButton.addEventListener("click", nextButtonHandler);
+  // Restart button listener
+  restartButton.addEventListener("click", restartButtonHandler);
 
   /************  FUNCTIONS  ************/
 
@@ -214,11 +218,11 @@ document.addEventListener("DOMContentLoaded", () => {
       radioInput.name = "choice";
       radioInput.value = choice;
       radioInput.id = `choice${index}`;
-    
+
       let radioLabel = document.createElement("label");
       radioLabel.setAttribute("for", `choice${index}`);
       radioLabel.innerText = choice;
-    
+
       choiceContainer.appendChild(radioInput);
       choiceContainer.appendChild(radioLabel);
       choiceContainer.appendChild(document.createElement("br"));
@@ -228,21 +232,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function nextButtonHandler() {
     const selectedChoice = document.querySelector('input[name="choice"]:checked');
     const selectedAnswer = selectedChoice ? selectedChoice.value : null;
-  
+
     if (selectedAnswer) {
       if (quiz.checkAnswer(selectedAnswer)) {
         console.log("Correct!");
       } else {
         console.log("Wrong!");
       }
-      console.log(`Current Score: ${quiz.correctAnswers}`); 
+      console.log(`Current Score: ${quiz.correctAnswers}`);
       quiz.moveToNextQuestion();
       showQuestion();
     } else {
       alert("Please select an answer before proceeding!");
     }
   }
-  
+
   //
   // YOUR CODE HERE:
   //
@@ -273,5 +277,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // resultContainer.innerText = `You scored 1 out of 1 correct answers!`; // This value is hardcoded as a placeholder
   }
+// button restart
+function restartButtonHandler() {
+  quizView.style.display = "flex";
+  endView.style.display = "none";
+  quiz.currentQuestionIndex = 0;
+  quiz.correctAnswers = 0;
+  quiz.shuffleQuestions();
+  showQuestion();
+};
+
+
+
+
 });
 
