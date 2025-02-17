@@ -6,7 +6,9 @@
 ![image](project-richard-kainat.gif)
 
 
+## Project Link
 
+🌐 Access the project online: [JS Quiz Ironhack](https://quiz-js-ironhack-e76fac679ac6.herokuapp.com/)
 
 ## Project Requirements
 
