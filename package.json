@@ -1,0 +1,32 @@
+{
+    "name": "javascript-quiz-project",
+    "version": "1.0.0",
+    "description": "First project Web Developer Iron Hack 2025 - Quiz Javascript -Students Kainat and Richard",
+    "main": "server.js",  
+    "directories": {
+      "test": "tests"
+    },
+    "scripts": {
+      "start": "node server.js" 
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/richardnixondev/javascript-quiz-project.git"
+    },
+    "keywords": [
+      "heroku",
+      "js"
+    ],
+    "author": "Richard, Kainat",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/richardnixondev/javascript-quiz-project/issues"
+    },
+    "homepage": "https://github.com/richardnixondev/javascript-quiz-project#readme",
+    "engines": {
+      "node": "18.19.1"
+    },
+    "dependencies": {
+      "express": "^4.18.2" 
+    }
+  }
